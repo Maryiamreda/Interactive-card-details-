@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Space Grotesk", sans-serif;
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+.App {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+
+  /* justify-content: center; */
+  font-size: calc(1rem + 1vmin);
+  color: white;
+  background-image: url('../images/bg-main-desktop.png');
+  background-repeat: no-repeat;
+  background-size: 22rem 100%;
+}
+
+
+/* Desktop styles */
+@media only screen and (min-width: 1440px) {
+  .App-header {
+    background-image: url('../images/bg-main-desktop.png');
+    font-size: 18px;
+
+    background-size: 22rem 100%;
+  }
+}
+
+/* For tablets */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .App-header {
+    font-size: calc(0.9rem + 1vmin);
+    background-size: 100% 14rem;
+
+  }
+}
+
+/* For mobile phones */
+@media only screen and (max-width: 480px) {
+  .App-header {
+    background-image: url('../images/bg-main-mobile.png');
+    font-size: calc(0.8rem + 1vmin);
+    background-size: 100% 15rem;
+    display: block;
+    padding-top: 117px;
+
+  }
+}

@@ -1,0 +1,14 @@
+.back {
+    width: 25vw;
+    height: 170px;
+    background-image: url('../../../../images/bg-card-back.png');
+    background-size: 100% 170px;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
+
+    @media only screen and (max-width: 480px) {
+        width: 70vw;
+        background-size: 100% 170px;
+
+    }
+}

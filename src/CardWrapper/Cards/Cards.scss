@@ -1,0 +1,37 @@
+.container {
+    width: 33vw;
+    margin-left: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .forBack {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+
+    /* For tablets */
+    @media only screen and (min-width: 481px) and (max-width: 768px) {}
+
+    /* For mobile phones */
+    @media only screen and (max-width: 480px) {
+        width: 40vw;
+        margin-left: 8.5px;
+        display: block;
+
+        .forBack {
+            position: relative;
+            top: -98px;
+            left: 100px;
+            display: block;
+        }
+
+        .forFront {
+            position: absolute;
+            z-index: 1;
+
+        }
+    }
+
+}
