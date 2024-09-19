@@ -1,19 +1,38 @@
-.front {
+@import '../mixins';
 
-    width: 25vw;
-    height: 170px;
-    background-image: url("../../../../images/bg-card-front.png");
-    background-size: 100% 170px;
-    background-repeat: no-repeat;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
+.front {
+    @include cardDesign();
+    background-image: url("../../../images/bg-card-front.png");
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
     img {
         display: flex;
         padding: 20px;
     }
 
-    @media only screen and (max-width: 480px) {
-        width: 70vw;
+
+}
+
+.info {
+    display: flex;
+    flex-flow: column;
+    padding-left: 39px;
+
+
+    .cardNumber {
+        padding-bottom: 20px;
+        font-size: 20px;
+        text-align: center;
     }
 
+    .cardBottom {
+        font-size: 11px;
+        display: flex;
+        gap: 6.9rem;
+    }
+
+    .date {}
 }

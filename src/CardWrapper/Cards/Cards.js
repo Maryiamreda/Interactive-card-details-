@@ -1,14 +1,21 @@
 import Back from './Back/Back';
 import './Cards.scss';
 import Front from './Front/Front';
-const Cards = () => {
+const Cards = ({ cardData }) => {
+    const { cardholderName, cardNumber, expMonth, expYear, cvc } = cardData;
+
+
     return (<div className='container'>
 
         <div className='forFront'>
-            <Front />
-        </div>
+            <Front
+                cardholderName={cardholderName}
+                cardNumber={cardNumber}
+                expMonth={expMonth}
+                expYear={expYear}
+            />        </div>
         <div className='forBack'>
-            <Back />
+            <Back cvc={cvc} />
         </div>
 
 

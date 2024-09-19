@@ -27,7 +27,7 @@
   /* justify-content: center; */
   font-size: calc(1rem + 1vmin);
   color: white;
-  background-image: url('../images/bg-main-desktop.png');
+  background-image: url('./images/bg-main-desktop.png');
   background-repeat: no-repeat;
   background-size: 22rem 100%;
 }
@@ -36,7 +36,7 @@
 /* Desktop styles */
 @media only screen and (min-width: 1440px) {
   .App-header {
-    background-image: url('../images/bg-main-desktop.png');
+    background-image: url('./images/bg-main-desktop.png');
     font-size: 18px;
 
     background-size: 22rem 100%;
@@ -47,6 +47,8 @@
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   .App-header {
     font-size: calc(0.9rem + 1vmin);
+    background-image: url('./images/bg-main-mobile.png');
+
     background-size: 100% 14rem;
 
   }
@@ -55,7 +57,7 @@
 /* For mobile phones */
 @media only screen and (max-width: 480px) {
   .App-header {
-    background-image: url('../images/bg-main-mobile.png');
+    background-image: url('./images/bg-main-mobile.png');
     font-size: calc(0.8rem + 1vmin);
     background-size: 100% 15rem;
     display: block;

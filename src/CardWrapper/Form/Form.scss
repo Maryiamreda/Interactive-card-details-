@@ -1,0 +1,63 @@
+.credit-card-form {
+    width: 20vw;
+    padding: 20px;
+    margin-top: 30px;
+
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: flex;
+    font-size: 9px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+input {
+    padding: 7px;
+    border: 1.5px solid rgb(204 204 204 / 50%);
+    border-radius: 6px;
+    font-size: 11px;
+
+    &::placeholder {
+        color: rgb(204 204 204 / 95%);
+        font-weight: 400;
+
+    }
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exp-date-inputs {
+    display: flex;
+    gap: 10px;
+
+    input {
+        width: 20px;
+    }
+}
+
+
+.submit-button {
+    width: 100%;
+    padding: 8px;
+    background-color: hsl(278, 68%, 11%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #3a0b3e;
+    }
+}
