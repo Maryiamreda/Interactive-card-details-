@@ -21,18 +21,33 @@
     flex-flow: column;
     padding-left: 39px;
 
+    @media only screen and (max-width: 480px) {
+        padding-left: 50px;
+
+    }
 
     .cardNumber {
         padding-bottom: 20px;
-        font-size: 20px;
+        font-size: 1.3rem;
         text-align: center;
+
+        @media only screen and (max-width: 480px) {
+            display: flex;
+            flex-direction: row;
+        }
+
     }
 
     .cardBottom {
         font-size: 11px;
         display: flex;
         gap: 6.9rem;
+
+        @media only screen and (max-width: 480px) {
+            flex-direction: row;
+        }
     }
 
-    .date {}
+
+
 }

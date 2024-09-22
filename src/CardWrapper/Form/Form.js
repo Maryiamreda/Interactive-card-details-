@@ -1,17 +1,65 @@
 import React, { useState } from 'react';
 import './Form.scss';
-const Form = ({ onSubmit }) => {
+
+const Form = ({ onSubmit, setValidation }) => {
     const [cardholderName, setCardholderName] = useState('');
     const [cardNumber, setCardNumber] = useState('');
     const [expMonth, setExpMonth] = useState('');
     const [expYear, setExpYear] = useState('');
     const [cvc, setCvc] = useState('');
-    console.log(cardholderName)
+    const [errors, setErrors] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit({ cardholderName, cardNumber, expMonth, expYear, cvc });
+        setValidation(true);
 
+        const newErrors = validateForm();
+        setErrors(newErrors);
+
+        if (Object.keys(newErrors).length === 0) {
+            console.log('Form submitted successfully!');
+            setValidation(true)
+
+        } else {
+            console.log('Form submission failed due to validation errors.');
+            setValidation(false)
+
+        }
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!cardholderName.trim()) {
+            newErrors.cardholderName = "Can't be blank";
+        }
+
+        if (!cardNumber.trim()) {
+            newErrors.cardNumber = "Can't be blank";
+        } else if (!/^(\d{4}\s?){3}\d{4}$/.test(cardNumber.replace(/\s/g, ''))) {
+            newErrors.cardNumber = 'Wrong format, numbers only';
+        }
+
+        if (!expMonth.trim()) {
+            newErrors.expMonth = "Can't be blank";
+        } else if (!/^\d{2}$/.test(expMonth) || parseInt(expMonth) < 1 || parseInt(expMonth) > 12) {
+            newErrors.expMonth = 'Invalid month';
+        }
+
+        if (!expYear.trim()) {
+            newErrors.expYear = "Can't be blank";
+        } else if (!/^\d{2}$/.test(expYear)) {
+            newErrors.expYear = 'Invalid year';
+        }
+
+        if (!cvc.trim()) {
+            newErrors.cvc = "Can't be blank";
+        } else if (!/^\d{3,4}$/.test(cvc)) {
+            newErrors.cvc = 'Invalid CVC';
+        }
+
+        return newErrors;
     };
 
     return (
@@ -25,8 +73,9 @@ const Form = ({ onSubmit }) => {
                         placeholder="e.g. Jane Appleseed"
                         value={cardholderName}
                         onChange={(e) => setCardholderName(e.target.value)}
-                        required
+                        className={errors.cardholderName ? 'error' : ''}
                     />
+                    {errors.cardholderName && <span className="error-message">{errors.cardholderName}</span>}
                 </div>
 
                 <div className="form-group">
@@ -37,8 +86,9 @@ const Form = ({ onSubmit }) => {
                         placeholder="e.g. 1234 5678 9123 0000"
                         value={cardNumber}
                         onChange={(e) => setCardNumber(e.target.value)}
-                        required
+                        className={errors.cardNumber ? 'error' : ''}
                     />
+                    {errors.cardNumber && <span className="error-message">{errors.cardNumber}</span>}
                 </div>
 
                 <div className="form-row">
@@ -51,7 +101,7 @@ const Form = ({ onSubmit }) => {
                                 placeholder="MM"
                                 value={expMonth}
                                 onChange={(e) => setExpMonth(e.target.value)}
-                                required
+                                className={errors.expMonth ? 'error' : ''}
                             />
                             <input
                                 type="text"
@@ -59,9 +109,12 @@ const Form = ({ onSubmit }) => {
                                 placeholder="YY"
                                 value={expYear}
                                 onChange={(e) => setExpYear(e.target.value)}
-                                required
+                                className={errors.expYear ? 'error' : ''}
                             />
                         </div>
+                        {(errors.expMonth || errors.expYear) && (
+                            <span className="error-message">{errors.expMonth || errors.expYear}</span>
+                        )}
                     </div>
 
                     <div className="form-group">
@@ -72,8 +125,9 @@ const Form = ({ onSubmit }) => {
                             placeholder="e.g. 123"
                             value={cvc}
                             onChange={(e) => setCvc(e.target.value)}
-                            required
+                            className={errors.cvc ? 'error' : ''}
                         />
+                        {errors.cvc && <span className="error-message">{errors.cvc}</span>}
                     </div>
                 </div>
 
@@ -81,8 +135,8 @@ const Form = ({ onSubmit }) => {
                     Confirm
                 </button>
             </form>
-        </div>)
-
+        </div>
+    );
 }
 
 export default Form;

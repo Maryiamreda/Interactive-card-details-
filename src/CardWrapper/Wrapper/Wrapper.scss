@@ -1,3 +1,31 @@
+@import'../buttons';
+
 div {
     display: flex;
+
+    @media only screen and (max-width: 480px) {
+        flex-direction: column;
+    }
+
+
+}
+
+.submit-button {
+    @include btn;
+}
+
+.success-message {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10vw;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.success-image {
+    width: 80px;
+    height: 80px;
+
 }
