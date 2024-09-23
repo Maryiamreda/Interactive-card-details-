@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import './Form.scss';
+import { useDispatch } from 'react-redux';
+import { updateCardData, setValidation } from '../../store/cardSlice';
 
-const Form = ({ onSubmit, setValidation }) => {
+const Form = () => {
+    const dispatch = useDispatch();
+
+    // Add state for form fields
     const [cardholderName, setCardholderName] = useState('');
     const [cardNumber, setCardNumber] = useState('');
     const [expMonth, setExpMonth] = useState('');
@@ -11,26 +16,33 @@ const Form = ({ onSubmit, setValidation }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({ cardholderName, cardNumber, expMonth, expYear, cvc });
-        setValidation(true);
 
-        const newErrors = validateForm();
+        const cardData = {
+            cardholderName,
+            cardNumber,
+            expMonth,
+            expYear,
+            cvc,
+        };
+
+        const newErrors = validateForm(cardData);
         setErrors(newErrors);
 
         if (Object.keys(newErrors).length === 0) {
+            dispatch(updateCardData(cardData)); // Dispatch the form data to Redux
+            dispatch(setValidation(true));
             console.log('Form submitted successfully!');
-            setValidation(true)
-
         } else {
             console.log('Form submission failed due to validation errors.');
-            setValidation(false)
-
+            dispatch(updateCardData(cardData)); // Dispatch the form data to Redux
+            dispatch(setValidation(false));
         }
     };
 
     const validateForm = () => {
         const newErrors = {};
 
+        // Validation logic for each field
         if (!cardholderName.trim()) {
             newErrors.cardholderName = "Can't be blank";
         }
@@ -137,6 +149,6 @@ const Form = ({ onSubmit, setValidation }) => {
             </form>
         </div>
     );
-}
+};
 
 export default Form;

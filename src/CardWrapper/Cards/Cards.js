@@ -1,8 +1,10 @@
 import Back from './Back/Back';
 import './Cards.scss';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Front from './Front/Front';
 const Cards = ({ cardData }) => {
-    const { cardholderName, cardNumber, expMonth, expYear, cvc } = cardData;
+    const { cardholderName, cardNumber, expMonth, expYear, cvc } = useSelector(state => state.card);
 
 
     return (<div className='container'>
